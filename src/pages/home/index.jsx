@@ -1,4 +1,4 @@
-import Directory from '../../components/directory/index.jsx'
+import Directory from '../../components/Directory/index.jsx'
 
 const Home = () => {
   return <Directory />

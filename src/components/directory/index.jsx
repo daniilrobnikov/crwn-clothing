@@ -1,6 +1,6 @@
 import './index.styles.scss'
 
-import CategoryItem from './category-item/index.jsx'
+import CategoryItem from './CategoryItem/index.jsx'
 const Directory = () => {
   const categories = [
     {
