@@ -1,5 +1,5 @@
-import Button from '../Button'
 import './index.styles.scss'
+import Button from '../Button'
 
 const ProductCard = ({ product }) => {
   const { name, imageUrl, price } = product
