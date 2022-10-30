@@ -1,21 +1,22 @@
 import { useContext } from 'react'
-import { UserContext } from '../../context/UserContext'
-import { CartContext } from '../../context/CartContext'
-
-import { Fragment } from 'react'
 import { Outlet, Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectCurrentUser } from '../../store/user/selector'
+
 import { signOutUser } from '../../utils/firebase'
+
+import { CartContext } from '../../context/CartContext'
 
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
 import CartIcon from './CartIcon'
 import CartDropdown from './CartDropdown'
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext)
+  const currentUser = useSelector(selectCurrentUser)
   const { isCartOpen } = useContext(CartContext)
 
   return (
-    <Fragment>
+    <>
       <div className='navigation'>
         <div className='logo-container'>
           <Link to='/'>
@@ -71,7 +72,7 @@ const Navigation = () => {
           cursor: pointer;
         }
       `}</style>
-    </Fragment>
+    </>
   )
 }
 

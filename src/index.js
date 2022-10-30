@@ -5,8 +5,9 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 import { BrowserRouter } from 'react-router-dom'
-import { UserProvider } from './context/UserContext'
-import { CategoriesProvider } from './context/CategoriesContext'
+import { Provider } from 'react-redux'
+import { store } from './store/store'
+
 import { CartProvider } from './context/CartContext'
 
 const _JSXStyle = require('styled-jsx/style').default
@@ -17,15 +18,13 @@ if (typeof global !== 'undefined') {
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <CategoriesProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 )
 
