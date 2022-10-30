@@ -1,4 +1,3 @@
-import './index.styles.scss'
 import { useState } from 'react'
 
 import {
@@ -86,6 +85,16 @@ const SignUpForm = () => {
         />
         <Button type='submit'>Sign Up</Button>
       </form>
+      <style jsx>{`
+        .sign-up-container {
+          display: flex;
+          flex-direction: column;
+          width: 380px;
+        }
+        h2 {
+          margin: 10px 0;
+        }
+      `}</style>
     </div>
   )
 }

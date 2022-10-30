@@ -1,5 +1,3 @@
-import './index.styles.scss'
-
 import { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
 import { CartContext } from '../../context/CartContext'
@@ -44,6 +42,35 @@ const Navigation = () => {
         {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
+      <style jsx>{`
+        .navigation {
+          height: 70px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 25px;
+        }
+
+        .navigation .logo-container {
+          height: 100%;
+          width: 70px;
+          padding: 25px;
+        }
+
+        .navigation .nav-links-container {
+          width: 50%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+      `}</style>
+      <style jsx global>{`
+        .navigation .nav-links-container .nav-link {
+          padding: 10px 15px;
+          cursor: pointer;
+        }
+      `}</style>
     </Fragment>
   )
 }

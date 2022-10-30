@@ -1,12 +1,12 @@
-import './index.styles.scss'
+import { Link } from 'react-router-dom'
 
 import ProductCard from './ProductCard'
 
 const CategoryPreview = ({ title, products }) => {
   return (
     <div className='category-preview-container'>
-      <h2>
-        <span className='title'>{title.toUpperCase()}</span>
+      <h2 className='title'>
+        <Link to={`/shop/${title}`}>{title.toUpperCase()}</Link>
       </h2>
       <div className='preview'>
         {products
@@ -15,6 +15,24 @@ const CategoryPreview = ({ title, products }) => {
             <ProductCard key={product.id} product={product} />
           ))}
       </div>
+      <style jsx>{`
+        .category-preview-container {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 30px;
+        }
+        .category-preview-container .preview {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          column-gap: 20px;
+        }
+        .category-preview-container .title {
+          font-size: 28px;
+          margin-bottom: 25px;
+          cursor: pointer;
+          text-align: center;
+        }
+      `}</style>
     </div>
   )
 }

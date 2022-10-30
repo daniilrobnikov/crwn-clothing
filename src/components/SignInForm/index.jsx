@@ -1,11 +1,8 @@
-import './index.styles.scss'
-
 import { useState } from 'react'
 
 // Firebase utils
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from '../../utils/firebase'
 
@@ -34,7 +31,7 @@ const SignInForm = () => {
     e.preventDefault()
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(email, password)
+      await signInAuthUserWithEmailAndPassword(email, password)
 
       // Reset form fields
       setFormFields(defaultFormFields)
@@ -78,6 +75,21 @@ const SignInForm = () => {
           </Button>
         </div>
       </form>
+      <style jsx>{`
+        .sign-in-container {
+          display: flex;
+          flex-direction: column;
+          width: 380px;
+        }
+        h2 {
+          margin: 10px 0;
+        }
+
+        .buttons-container {
+          display: flex;
+          justify-content: space-between;
+        }
+      `}</style>
     </div>
   )
 }

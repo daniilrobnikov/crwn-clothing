@@ -1,4 +1,3 @@
-import './index.styles.scss'
 import { useContext, useState, useEffect } from 'react'
 import { CategoriesContext } from '../../context/CategoriesContext'
 
@@ -17,12 +16,29 @@ const Category = () => {
   }, [category, categoriesMap])
 
   return (
-    <div className='category-container'>
-      {products &&
-        products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-    </div>
+    <>
+      <h2 className='title'>{category.toUpperCase()}</h2>
+      <div className='category-container'>
+        {products &&
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+      </div>
+      <style jsx>{`
+        .category-container {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          column-gap: 10px;
+          row-gap: 50px;
+        }
+
+        .title {
+          font-size: 38px;
+          margin-bottom: 25px;
+          text-align: center;
+        }
+      `}</style>
+    </>
   )
 }
 

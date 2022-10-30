@@ -1,4 +1,3 @@
-import './index.styles.scss'
 import { Routes, Route } from 'react-router-dom'
 
 import Categories from '../categories'
@@ -11,6 +10,12 @@ const Shop = () => {
         <Route index element={<Categories />} />
         <Route path=':category' element={<Category />} />
       </Routes>
+      <style jsx>{`
+        .shop-container {
+          display: flex;
+          flex-direction: column;
+        }
+      `}</style>
     </div>
   )
 }
