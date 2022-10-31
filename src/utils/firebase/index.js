@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import {
   getAuth,
-  signInWithRedirect,
+  // signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -41,8 +41,12 @@ googleProvider.setCustomParameters({
 })
 export const auth = getAuth(firebaseApp)
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
-export const signInWithGoogleRedirect = () =>
-  signInWithRedirect(auth, googleProvider)
+/**
+ * @TODO:
+ * Remove
+ */
+// export const signInWithGoogleRedirect = () =>
+//   signInWithRedirect(auth, googleProvider)
 
 // Export Database
 export const db = getFirestore()
@@ -92,7 +96,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalData) => {
     }
   }
 
-  return userDocRef
+  return userSnapShot
 }
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -109,6 +113,18 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => await signOut(auth)
 
-export const onAuthStateChangedListener = (callback) => {
-  return onAuthStateChanged(auth, callback)
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback)
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe()
+        resolve(userAuth)
+      },
+      reject
+    )
+  })
 }

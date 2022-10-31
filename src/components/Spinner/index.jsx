@@ -1,7 +1,7 @@
 const Spinner = () => {
   return (
     <div className='spinner-overlay'>
-      <div className='spinner-container'></div>
+      <div className='spinner-container' />
       <style jsx>{`
         .spinner-overlay {
           height: 60vh;
@@ -18,16 +18,10 @@ const Spinner = () => {
           border-radius: 50%;
           border-top-color: #636767;
           animation: spin 1s ease-in-out infinite;
-          -webkit-animation: spin 1s ease-in-out infinite;
         }
         @keyframes spin {
           to {
-            -webkit-transform: rotate(360deg);
-          }
-        }
-        @-webkit-keyframes spin {
-          to {
-            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
           }
         }
       `}</style>
