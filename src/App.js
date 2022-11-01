@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import { checkUserSession } from './store/user/action'
 
 // Components
-import Navigation from './components/Navigation'
+import Navigation from './components/Navigation/index.jsx'
 import Home from './pages/home'
 import Shop from './pages/shop'
 import Auth from './pages/auth'
